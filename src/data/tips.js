@@ -157,17 +157,6 @@ userMap.set('jane', { age: 25 });
 console.log(userMap.get('john'));`
   },
   {
-    slug: 'promises',
-    title: 'Promise Patterns',
-    summary: 'Handle asynchronous operations effectively.',
-    description: 'Promises provide a cleaner way to handle asynchronous operations and avoid callback hell.',
-    codeSnippet: `const promise = new Promise((resolve, reject) => {
-  setTimeout(() => resolve('Success!'), 1000);
-});
-
-promise.then(result => console.log(result));`
-  },
-  {
     slug: 'generators',
     title: 'Generator Functions',
     summary: 'Create iterative algorithms easily.',
@@ -252,102 +241,6 @@ navigator.geolocation.getCurrentPosition(
   .then(user => fetch("/api/posts/\${user.id}"))
   .then(posts => console.log(posts))
   .catch(error => console.error(error));`
-  },
-  {
-    slug: 'sets',
-    title: 'Using Sets',
-    summary: 'Work with unique value collections.',
-    description: 'Sets are built-in objects that store unique values of any type, whether primitive values or object references.',
-    codeSnippet: `const uniqueNumbers = new Set([1, 1, 2, 3, 3]);
-console.log([...uniqueNumbers]); // [1, 2, 3]
-uniqueNumbers.add(4);
-console.log(uniqueNumbers.has(1)); // true`
-  },
-  {
-    slug: 'maps',
-    title: 'Map Collections',
-    summary: 'Use Maps for key-value associations.',
-    description: 'Maps are collections of keyed data items, like Objects, but allow keys of any type and maintain insertion order.',
-    codeSnippet: `const userMap = new Map();
-userMap.set('name', 'John');
-userMap.set(42, 'age');
-console.log(userMap.get('name')); // 'John'`
-  },
-  {
-    slug: 'generators',
-    title: 'Generator Functions',
-    summary: 'Create iteratable sequences.',
-    description: 'Generator functions provide a powerful way to define iterative algorithms by writing functions that can be paused and resumed.',
-    codeSnippet: `function* numberGenerator() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-const gen = numberGenerator();
-console.log([...gen]); // [1, 2, 3]`
-  },
-  {
-    slug: 'proxy',
-    title: 'Proxy Objects',
-    summary: 'Intercept object operations.',
-    description: 'Proxies enable custom behavior for fundamental operations like property lookup, assignment, and enumeration.',
-    codeSnippet: `const handler = {
-  get: (target, prop) => \`Property \${prop}\`
-};
-const proxy = new Proxy({}, handler);
-console.log(proxy.name); // 'Property name'`
-  },
-  {
-    slug: 'optional-chaining',
-    title: 'Optional Chaining',
-    summary: 'Safely access nested properties.',
-    description: 'Optional chaining allows reading the value of a property located deep within a chain of connected objects without having to check each reference.',
-    codeSnippet: `const user = { 
-  address: { 
-    street: null 
-  } 
-};
-console.log(user?.address?.street); // null`
-  },
-  {
-    slug: 'nullish-coalescing',
-    title: 'Nullish Coalescing',
-    summary: 'Handle null/undefined values.',
-    description: 'The nullish coalescing operator (??) provides a way to specify a default value when dealing with null or undefined.',
-    codeSnippet: `const value = null;
-const defaultValue = value ?? 'default';
-console.log(defaultValue); // 'default'`
-  },
-  {
-    slug: 'template-literals',
-    title: 'Template Literals',
-    summary: 'Write flexible string templates.',
-    description: 'Template literals allow embedded expressions and multi-line strings, making string interpolation more readable.',
-    codeSnippet: `const name = 'World';
-const greeting = \`Hello
-  ${name}!\`;
-console.log(greeting);`
-  },
-  {
-    slug: 'array-methods',
-    title: 'Array Methods',
-    summary: 'Master array transformations.',
-    description: 'Modern JavaScript provides powerful array methods for transforming and processing data in a functional way.',
-    codeSnippet: `const numbers = [1, 2, 3, 4];
-const doubled = numbers
-  .map(n => n * 2)
-  .filter(n => n > 4);`
-  },
-  {
-    slug: 'object-methods',
-    title: 'Object Methods',
-    summary: 'Work with object properties.',
-    description: 'JavaScript provides various methods to manipulate and inspect object properties and their attributes.',
-    codeSnippet: `const person = { name: 'John' };
-Object.defineProperty(person, 'age', {
-  value: 30,
-  writable: false
-});`
   },
   {
     slug: 'symbol',
@@ -1200,3 +1093,17 @@ ndef.onreading = ({ message }) => {
   }
 ];
 console.log(tips.length);
+tips.forEach(tip => {
+  console.log(tip.slug);
+});
+const slugs = tips.map(tip => tip.slug);
+const uniqueSlugs = [...new Set(slugs)];
+console.log(uniqueSlugs.length);
+// Find duplicate slugs and their indices
+slugs.forEach((slug, index) => {
+  const firstIndex = slugs.indexOf(slug);
+  if (firstIndex !== index) {
+    console.log(`Duplicate found: "${slug}" at indices ${firstIndex} and ${index}`);
+  }
+});
+
