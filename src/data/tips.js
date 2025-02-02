@@ -574,27 +574,6 @@ picker.select(['name', 'email'])
   .then(contacts => console.log(contacts));`
   },
   {
-    slug: 'web-share',
-    title: 'Web Share API',
-    summary: 'Native sharing capabilities.',
-    description: 'The Web Share API enables web apps to use the native sharing capabilities of the device.',
-    codeSnippet: `navigator.share({
-  title: 'Check this out!',
-  text: 'Interesting article',
-  url: window.location.href
-});`
-  },
-  {
-    slug: 'payment-request',
-    title: 'Payment Request API',
-    summary: 'Handle payments in web apps.',
-    description: 'The Payment Request API provides a consistent way to handle payments in web applications.',
-    codeSnippet: `const request = new PaymentRequest(
-  [{ supportedMethods: 'basic-card' }],
-  { total: { label: 'Total', amount: { currency: 'USD', value: '10.00' }}}
-);`
-  },
-  {
     slug: 'web-bluetooth',
     title: 'Web Bluetooth API',
     summary: 'Connect to Bluetooth devices.',
@@ -784,17 +763,6 @@ const graph = await builder.build({
 .then(device => device.gatt.connect());`
   },
   {
-    slug: 'web-share',
-    title: 'Web Share API',
-    summary: 'Native sharing capabilities.',
-    description: 'The Web Share API enables web apps to use the native sharing capabilities of the device.',
-    codeSnippet: `navigator.share({
-  title: 'Check this out!',
-  text: 'Interesting article',
-  url: window.location.href
-});`
-  },
-  {
     slug: 'web-animations',
     title: 'Web Animations API',
     summary: 'Programmatic animations.',
@@ -970,64 +938,6 @@ ws.send('Hello Server!');`
 });`
   },
   {
-    slug: 'web-share',
-    title: 'Web Share API',
-    summary: 'Native sharing capabilities.',
-    description: 'The Web Share API provides a way to trigger the native sharing capabilities of the device.',
-    codeSnippet: `navigator.share({
-  title: 'Check this out!',
-  text: 'Interesting article',
-  url: window.location.href
-});`
-  },
-  {
-    slug: 'web-speech',
-    title: 'Web Speech API',
-    summary: 'Speech recognition and synthesis.',
-    description: 'The Web Speech API enables you to incorporate voice data into web apps.',
-    codeSnippet: `const synth = window.speechSynthesis;
-const utterance = new SpeechSynthesisUtterance('Hello World');
-synth.speak(utterance);`
-  },
-  {
-    slug: 'web-bluetooth',
-    title: 'Web Bluetooth API',
-    summary: 'Connect to Bluetooth devices.',
-    description: 'The Web Bluetooth API allows websites to communicate with Bluetooth devices.',
-    codeSnippet: `navigator.bluetooth.requestDevice({
-  filters: [{ services: ['battery_service'] }]
-})
-.then(device => device.gatt.connect());`
-  },
-  {
-    slug: 'web-usb',
-    title: 'Web USB API',
-    summary: 'USB device interaction.',
-    description: 'The Web USB API provides a way to safely expose USB device services to the web.',
-    codeSnippet: `navigator.usb.requestDevice({ filters: [] })
-  .then(device => device.open())
-  .then(() => console.log('Connected'));`
-  },
-  {
-    slug: 'web-locks',
-    title: 'Web Locks API',
-    summary: 'Resource coordination.',
-    description: 'The Web Locks API allows web apps to coordinate the use of resources.',
-    codeSnippet: `navigator.locks.request('resource_name', async lock => {
-  // Critical section
-  await doSomething();
-});`
-  },
-  {
-    slug: 'web-crypto',
-    title: 'Web Crypto API',
-    summary: 'Cryptographic operations.',
-    description: 'The Web Crypto API provides cryptographic functionality in web applications.',
-    codeSnippet: `const data = new TextEncoder().encode('Hello');
-crypto.subtle.digest('SHA-256', data)
-  .then(hash => console.log(hash));`
-  },
-  {
     slug: 'web-animations',
     title: 'Web Animations API',
     summary: 'Programmatic animations.',
@@ -1041,16 +951,42 @@ crypto.subtle.digest('SHA-256', data)
 });`
   },
   {
-    slug: 'web-components',
-    title: 'Web Components',
-    summary: 'Custom HTML elements.',
-    description: 'Web Components allow you to create reusable custom elements.',
-    codeSnippet: `class MyElement extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = 'Hello from custom element!';
-  }
-}
-customElements.define('my-element', MyElement);`
+    slug: 'web-audio',
+    title: 'Web Audio API',
+    summary: 'Advanced audio processing.',
+    description: 'The Web Audio API provides a powerful system for controlling audio on the web.',
+    codeSnippet: `const audioContext = new AudioContext();
+const oscillator = audioContext.createOscillator();
+oscillator.connect(audioContext.destination);
+oscillator.start();`
+  },
+  {
+    slug: 'web-speech',
+    title: 'Web Speech API',
+    summary: 'Speech recognition and synthesis.',
+    description: 'The Web Speech API enables you to incorporate voice data into web apps.',
+    codeSnippet: `const synth = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance('Hello World');
+synth.speak(utterance);`
+  },
+  {
+    slug: 'web-crypto',
+    title: 'Web Crypto API',
+    summary: 'Cryptographic operations.',
+    description: 'The Web Crypto API provides cryptographic functionality for web applications.',
+    codeSnippet: `const data = new TextEncoder().encode('Hello');
+crypto.subtle.digest('SHA-256', data)
+  .then(hash => console.log(new Uint8Array(hash)));`
+  },
+  {
+    slug: 'web-locks',
+    title: 'Web Locks API',
+    summary: 'Resource coordination.',
+    description: 'The Web Locks API allows web apps to coordinate the use of resources.',
+    codeSnippet: `navigator.locks.request('resource_name', async lock => {
+  // Critical section
+  await doSomething();
+});`
   },
   {
     slug: 'web-rtc',
