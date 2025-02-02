@@ -879,5 +879,202 @@ const graph = await builder.build({
   .then(obj => {
     console.log(obj.instance.exports.add(1, 2));
   });`
+  },
+  {
+    slug: 'web-bluetooth',
+    title: 'Web Bluetooth',
+    summary: 'Connect to Bluetooth devices.',
+    description: 'The Web Bluetooth API provides a way to connect and interact with Bluetooth Low Energy devices.',
+    codeSnippet: `navigator.bluetooth.requestDevice({
+  filters: [{ services: ['battery_service'] }]
+})
+.then(device => device.gatt.connect());`
+  },
+  {
+    slug: 'web-share',
+    title: 'Web Share API',
+    summary: 'Native sharing capabilities.',
+    description: 'The Web Share API enables web apps to use the native sharing capabilities of the device.',
+    codeSnippet: `navigator.share({
+  title: 'Check this out!',
+  text: 'Interesting article',
+  url: window.location.href
+});`
+  },
+  {
+    slug: 'web-animations',
+    title: 'Web Animations API',
+    summary: 'Programmatic animations.',
+    description: 'The Web Animations API provides control over browser animations through JavaScript.',
+    codeSnippet: `element.animate([
+  { transform: 'scale(1)' },
+  { transform: 'scale(1.5)' }
+], {
+  duration: 1000,
+  iterations: Infinity
+});`
+  },
+  {
+    slug: 'web-audio',
+    title: 'Web Audio API',
+    summary: 'Advanced audio processing.',
+    description: 'The Web Audio API enables complex audio processing and synthesis in the browser.',
+    codeSnippet: `const audioContext = new AudioContext();
+const oscillator = audioContext.createOscillator();
+oscillator.connect(audioContext.destination);
+oscillator.start();`
+  },
+  {
+    slug: 'web-speech',
+    title: 'Web Speech API',
+    summary: 'Speech recognition and synthesis.',
+    description: 'The Web Speech API enables speech recognition and text-to-speech functionality.',
+    codeSnippet: `const synth = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance('Hello World');
+synth.speak(utterance);`
+  },
+  {
+    slug: 'web-crypto',
+    title: 'Web Crypto API',
+    summary: 'Cryptographic operations.',
+    description: 'The Web Crypto API provides cryptographic functionality for web applications.',
+    codeSnippet: `const data = new TextEncoder().encode('Hello');
+crypto.subtle.digest('SHA-256', data)
+  .then(hash => console.log(new Uint8Array(hash)));`
+  },
+  {
+    slug: 'web-locks',
+    title: 'Web Locks API',
+    summary: 'Coordinate resource access.',
+    description: 'The Web Locks API enables coordination of resource access across multiple tabs.',
+    codeSnippet: `navigator.locks.request('resource_name', async lock => {
+  // Exclusive access to resource
+  await doSomething();
+});`
+  },
+  {
+    slug: 'web-rtc',
+    title: 'WebRTC',
+    summary: 'Real-time communication.',
+    description: 'WebRTC enables real-time peer-to-peer audio, video, and data communication.',
+    codeSnippet: `const pc = new RTCPeerConnection();
+pc.createOffer()
+  .then(offer => pc.setLocalDescription(offer))
+  .then(() => sendOfferToSignalingServer());`
+  },
+  {
+    slug: 'web-serial',
+    title: 'Web Serial API',
+    summary: 'Serial port communication.',
+    description: 'The Web Serial API allows websites to communicate with serial devices.',
+    codeSnippet: `navigator.serial.requestPort()
+  .then(port => port.open({ baudRate: 9600 }))
+  .then(port => port.write(data));`
+  },
+  {
+    slug: 'web-usb',
+    title: 'WebUSB API',
+    summary: 'USB device access.',
+    description: 'The WebUSB API provides a way to safely expose USB device services to the web.',
+    codeSnippet: `navigator.usb.requestDevice({ filters: [] })
+  .then(device => device.open())
+  .then(() => device.selectConfiguration(1));`
+  },
+  {
+    slug: 'web-transport',
+    title: 'WebTransport',
+    summary: 'Modern network protocol.',
+    description: 'WebTransport provides modern network capabilities with multiple streams and low latency.',
+    codeSnippet: `const transport = new WebTransport('https://example.com:4433/wt');
+const stream = await transport.createBidirectionalStream();
+const writer = stream.writable.getWriter();`
+  },
+  {
+    slug: 'web-gl2',
+    title: 'WebGL 2',
+    summary: '3D graphics rendering.',
+    description: 'WebGL 2 provides advanced 3D graphics capabilities in the browser.',
+    codeSnippet: `const gl = canvas.getContext('webgl2');
+const program = gl.createProgram();
+gl.useProgram(program);
+gl.drawArrays(gl.TRIANGLES, 0, 3);`
+  },
+  {
+    slug: 'web-components',
+    title: 'Web Components',
+    summary: 'Custom HTML elements.',
+    description: 'Web Components allow you to create reusable custom elements with encapsulated functionality.',
+    codeSnippet: `class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
   }
-]; 
+}
+customElements.define('my-element', MyElement);`
+  },
+  {
+    slug: 'web-storage',
+    title: 'Web Storage API',
+    summary: 'Client-side storage.',
+    description: 'The Web Storage API provides mechanisms to store key-value pairs in a web browser.',
+    codeSnippet: `sessionStorage.setItem('key', 'value');
+localStorage.setItem('key', 'value');
+const value = localStorage.getItem('key');`
+  },
+  {
+    slug: 'web-sockets',
+    title: 'WebSocket API',
+    summary: 'Full-duplex communication.',
+    description: 'WebSocket enables two-way communication between a client and server over a single connection.',
+    codeSnippet: `const ws = new WebSocket('wss://example.com');
+ws.onmessage = event => console.log(event.data);
+ws.send('Hello Server!');`
+  },
+  {
+    slug: 'web-notifications',
+    title: 'Web Notifications',
+    summary: 'System notifications.',
+    description: 'The Notifications API enables web apps to display system notifications to the user.',
+    codeSnippet: `Notification.requestPermission().then(permission => {
+  if (permission === 'granted') {
+    new Notification('Hello!', { body: 'This is a notification' });
+  }
+});`
+  },
+  {
+    slug: 'web-payments',
+    title: 'Web Payments API',
+    summary: 'Payment processing.',
+    description: 'The Payment Request API standardizes the payment checkout process in web applications.',
+    codeSnippet: `const request = new PaymentRequest(
+  [{ supportedMethods: 'basic-card' }],
+  { total: { label: 'Total', amount: { currency: 'USD', value: '10.00' }}}
+);`
+  },
+  {
+    slug: 'web-midi',
+    title: 'Web MIDI API',
+    summary: 'MIDI device interaction.',
+    description: 'The Web MIDI API enables web applications to interact with MIDI musical instruments.',
+    codeSnippet: `navigator.requestMIDIAccess()
+  .then(access => {
+    for (let input of access.inputs.values()) {
+      input.onmidimessage = message => console.log(message.data);
+    }
+  });`
+  },
+  {
+    slug: 'web-authentication',
+    title: 'Web Authentication',
+    summary: 'Passwordless authentication.',
+    description: 'The Web Authentication API enables strong authentication with public key cryptography.',
+    codeSnippet: `navigator.credentials.create({
+  publicKey: {
+    challenge: new Uint8Array(32),
+    rp: { name: 'Example Site' },
+    user: { id: new Uint8Array(16), name: 'john.doe@example.com' }
+  }
+});`
+  }
+];
+console.log(tips.length);
