@@ -6,6 +6,10 @@ Homepage has the tip summary in card format. Clicking on it, takes user to the d
 
 The detail pages are in a tutorial format, explaining the concept with a code example.
 
+## Live Demo
+
+View live at https://learn-javascript-tips-with-code-examples.vercel.app/
+
 ## Created with Vue 3 + Vite
 
 ### Development
