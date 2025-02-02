@@ -1075,6 +1075,6 @@ ws.send('Hello Server!');`
     user: { id: new Uint8Array(16), name: 'john.doe@example.com' }
   }
 });`
-  }
+  },
 ];
 console.log(tips.length);
