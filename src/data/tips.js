@@ -679,5 +679,205 @@ crypto.subtle.digest('SHA-256', data)
     codeSnippet: `const picker = new ContactsPicker();
 picker.select(['name', 'email'])
   .then(contacts => console.log(contacts));`
+  },
+  {
+    slug: 'web-share',
+    title: 'Web Share API',
+    summary: 'Native sharing capabilities.',
+    description: 'The Web Share API enables web apps to use the native sharing capabilities of the device.',
+    codeSnippet: `navigator.share({
+  title: 'Check this out!',
+  text: 'Interesting article',
+  url: window.location.href
+});`
+  },
+  {
+    slug: 'payment-request',
+    title: 'Payment Request API',
+    summary: 'Handle payments in web apps.',
+    description: 'The Payment Request API provides a consistent way to handle payments in web applications.',
+    codeSnippet: `const request = new PaymentRequest(
+  [{ supportedMethods: 'basic-card' }],
+  { total: { label: 'Total', amount: { currency: 'USD', value: '10.00' }}}
+);`
+  },
+  {
+    slug: 'web-bluetooth',
+    title: 'Web Bluetooth API',
+    summary: 'Connect to Bluetooth devices.',
+    description: 'The Web Bluetooth API allows web apps to connect to and interact with Bluetooth Low Energy devices.',
+    codeSnippet: `navigator.bluetooth.requestDevice({
+  filters: [{ services: ['battery_service'] }]
+})
+.then(device => device.gatt.connect());`
+  },
+  {
+    slug: 'web-nfc',
+    title: 'Web NFC',
+    summary: 'Read and write NFC tags.',
+    description: 'Web NFC enables web applications to read and write NFC tags when they are in close proximity.',
+    codeSnippet: `const ndef = new NDEFReader();
+await ndef.write({
+  records: [{ recordType: "text", data: "Hello NFC!" }]
+});`
+  },
+  {
+    slug: 'web-usb',
+    title: 'Web USB API',
+    summary: 'Connect to USB devices.',
+    description: 'The Web USB API provides a way to safely connect to USB devices from web applications.',
+    codeSnippet: `navigator.usb.requestDevice({
+  filters: [{ vendorId: 0x2341 }]
+})
+.then(device => device.open());`
+  },
+  {
+    slug: 'web-serial',
+    title: 'Web Serial API',
+    summary: 'Connect to serial devices.',
+    description: 'The Web Serial API provides a way to read and write data to serial devices connected to your computer.',
+    codeSnippet: `navigator.serial.requestPort()
+  .then(port => port.open({ baudRate: 9600 }))
+  .then(port => port.write(data));`
+  },
+  {
+    slug: 'web-midi',
+    title: 'Web MIDI API',
+    summary: 'Interface with MIDI devices.',
+    description: 'The Web MIDI API enables web applications to interact with MIDI musical instruments and devices.',
+    codeSnippet: `navigator.requestMIDIAccess()
+  .then(access => {
+    for (let input of access.inputs.values()) {
+      input.onmidimessage = message => console.log(message.data);
+    }
+  });`
+  },
+  {
+    slug: 'credential-management',
+    title: 'Credential Management',
+    summary: 'Handle user credentials.',
+    description: 'The Credential Management API enables web apps to interact with the browser\'s credential manager.',
+    codeSnippet: `navigator.credentials.get({
+  password: true,
+  mediation: 'optional'
+})
+.then(cred => console.log(cred));`
+  },
+  {
+    slug: 'web-animations',
+    title: 'Web Animations API',
+    summary: 'Create programmatic animations.',
+    description: 'The Web Animations API provides a powerful way to create and control animations in JavaScript.',
+    codeSnippet: `element.animate([
+  { transform: 'scale(1)' },
+  { transform: 'scale(1.5)' }
+], {
+  duration: 1000,
+  iterations: Infinity
+});`
+  },
+  {
+    slug: 'web-audio',
+    title: 'Web Audio API',
+    summary: 'Advanced audio processing.',
+    description: 'The Web Audio API provides a powerful system for controlling audio on the web.',
+    codeSnippet: `const audioContext = new AudioContext();
+const oscillator = audioContext.createOscillator();
+oscillator.connect(audioContext.destination);
+oscillator.start();`
+  },
+  {
+    slug: 'web-speech',
+    title: 'Web Speech API',
+    summary: 'Speech recognition and synthesis.',
+    description: 'The Web Speech API enables web apps to handle voice data, including speech recognition and synthesis.',
+    codeSnippet: `const recognition = new SpeechRecognition();
+recognition.onresult = event => {
+  console.log(event.results[0][0].transcript);
+};
+recognition.start();`
+  },
+  {
+    slug: 'web-rtc',
+    title: 'WebRTC',
+    summary: 'Real-time communication.',
+    description: 'WebRTC enables real-time communication of audio, video, and data in web browsers.',
+    codeSnippet: `const pc = new RTCPeerConnection();
+pc.createOffer()
+  .then(offer => pc.setLocalDescription(offer))
+  .then(() => sendSignalingMessage(pc.localDescription));`
+  },
+  {
+    slug: 'web-crypto',
+    title: 'Web Crypto API',
+    summary: 'Cryptographic operations.',
+    description: 'The Web Crypto API provides cryptographic functionality in web applications.',
+    codeSnippet: `const data = new TextEncoder().encode('Hello');
+crypto.subtle.digest('SHA-256', data)
+  .then(hash => console.log(new Uint8Array(hash)));`
+  },
+  {
+    slug: 'web-transport',
+    title: 'WebTransport',
+    summary: 'Modern network transport.',
+    description: 'WebTransport provides modern networking capabilities with multiple streams and low latency.',
+    codeSnippet: `const transport = new WebTransport('https://example.com:4433/wt');
+const stream = await transport.createBidirectionalStream();
+const writer = stream.writable.getWriter();
+await writer.write(data);`
+  },
+  {
+    slug: 'web-codecs',
+    title: 'WebCodecs',
+    summary: 'Low-level media coding.',
+    description: 'WebCodecs provides low-level access to media encoders and decoders.',
+    codeSnippet: `const decoder = new VideoDecoder({
+  output: frame => {
+    console.log(frame.timestamp);
+    frame.close();
+  },
+  error: e => console.error(e)
+});`
+  },
+  {
+    slug: 'web-hid',
+    title: 'WebHID',
+    summary: 'Human Interface Devices.',
+    description: 'The WebHID API allows web apps to interact with Human Interface Devices (HID).',
+    codeSnippet: `navigator.hid.requestDevice({
+  filters: [{ vendorId: 0x0483 }]
+})
+.then(devices => devices[0].open());`
+  },
+  {
+    slug: 'web-gpu',
+    title: 'WebGPU',
+    summary: 'Modern graphics API.',
+    description: 'WebGPU provides modern graphics and compute capabilities for web applications.',
+    codeSnippet: `const adapter = await navigator.gpu.requestAdapter();
+const device = await adapter.requestDevice();
+const context = canvas.getContext('webgpu');
+const format = navigator.gpu.getPreferredCanvasFormat();`
+  },
+  {
+    slug: 'web-nn',
+    title: 'Web Neural Network',
+    summary: 'Machine learning inference.',
+    description: 'The Web Neural Network API enables running machine learning models in the browser.',
+    codeSnippet: `const context = await navigator.ml.createContext();
+const builder = new MLGraphBuilder(context);
+const graph = await builder.build({
+  input: builder.input('input', {type: 'float32', dimensions: [1, 28, 28, 1]})
+});`
+  },
+  {
+    slug: 'web-assembly',
+    title: 'WebAssembly',
+    summary: 'Run low-level code.',
+    description: 'WebAssembly enables running low-level code at near-native speed in web browsers.',
+    codeSnippet: `WebAssembly.instantiateStreaming(fetch('module.wasm'))
+  .then(obj => {
+    console.log(obj.instance.exports.add(1, 2));
+  });`
   }
 ]; 
