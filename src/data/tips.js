@@ -461,5 +461,223 @@ console.log(new Intl.NumberFormat('de-DE').format(number));
 // Some code to measure
 const t1 = performance.now();
 console.log(\`Operation took \${t1 - t0} ms\`);`
+  },
+  {
+    slug: 'web-workers',
+    title: 'Web Workers',
+    summary: 'Run scripts in background threads.',
+    description: 'Web Workers allow you to run scripts in background threads, enabling parallel processing without blocking the main thread.',
+    codeSnippet: `const worker = new Worker('worker.js');
+worker.postMessage({ data: 'process this' });
+worker.onmessage = (e) => console.log(e.data);`
+  },
+  {
+    slug: 'intersection-observer',
+    title: 'Intersection Observer',
+    summary: 'Track element visibility.',
+    description: 'The Intersection Observer API provides a way to detect when elements enter or leave the viewport.',
+    codeSnippet: `const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});`
+  },
+  {
+    slug: 'mutation-observer',
+    title: 'Mutation Observer',
+    summary: 'Watch DOM changes.',
+    description: 'MutationObserver lets you watch for changes being made to the DOM tree.',
+    codeSnippet: `const observer = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    console.log(mutation.type);
+  });
+});
+observer.observe(element, { childList: true });`
+  },
+  {
+    slug: 'broadcast-channel',
+    title: 'BroadcastChannel API',
+    summary: 'Communicate between tabs.',
+    description: 'BroadcastChannel API allows communication between different tabs, windows, and iframes of the same origin.',
+    codeSnippet: `const bc = new BroadcastChannel('test_channel');
+bc.postMessage('Hello from tab A!');
+bc.onmessage = (event) => console.log(event.data);`
+  },
+  {
+    slug: 'resize-observer',
+    title: 'Resize Observer',
+    summary: 'Track element size changes.',
+    description: 'ResizeObserver provides a way to react to changes in element dimensions.',
+    codeSnippet: `const observer = new ResizeObserver(entries => {
+  entries.forEach(entry => {
+    console.log(entry.contentRect);
+  });
+});
+observer.observe(element);`
+  },
+  {
+    slug: 'web-animations',
+    title: 'Web Animations API',
+    summary: 'Create dynamic animations.',
+    description: 'The Web Animations API provides control over browser animations through JavaScript.',
+    codeSnippet: `element.animate([
+  { transform: 'scale(1)' },
+  { transform: 'scale(1.5)' }
+], {
+  duration: 1000,
+  iterations: Infinity
+});`
+  },
+  {
+    slug: 'credential-management',
+    title: 'Credential Management',
+    summary: 'Handle user credentials.',
+    description: 'The Credential Management API enables websites to interact with user credentials.',
+    codeSnippet: `navigator.credentials.get({
+  password: true,
+  mediation: 'optional'
+}).then(credential => {
+  if (credential) console.log('Got credential');
+});`
+  },
+  {
+    slug: 'payment-request',
+    title: 'Payment Request API',
+    summary: 'Handle payments in web apps.',
+    description: 'The Payment Request API provides a consistent way to handle payments across different browsers.',
+    codeSnippet: `const request = new PaymentRequest(
+  [{ supportedMethods: 'basic-card' }],
+  { total: { label: 'Total', amount: { currency: 'USD', value: '10.00' }}}
+);`
+  },
+  {
+    slug: 'web-share',
+    title: 'Web Share API',
+    summary: 'Native sharing capabilities.',
+    description: 'The Web Share API enables websites to use the platform\'s native sharing capabilities.',
+    codeSnippet: `navigator.share({
+  title: 'Check this out',
+  text: 'Interesting article',
+  url: window.location.href
+}).then(() => console.log('Shared successfully'));`
+  },
+  {
+    slug: 'web-bluetooth',
+    title: 'Web Bluetooth',
+    summary: 'Connect to Bluetooth devices.',
+    description: 'Web Bluetooth API allows websites to communicate with Bluetooth devices.',
+    codeSnippet: `navigator.bluetooth.requestDevice({
+  filters: [{ services: ['battery_service'] }]
+}).then(device => device.gatt.connect());`
+  },
+  {
+    slug: 'web-usb',
+    title: 'Web USB',
+    summary: 'Interact with USB devices.',
+    description: 'The Web USB API provides a way to interact with USB devices from web applications.',
+    codeSnippet: `navigator.usb.requestDevice({
+  filters: [{ vendorId: 0x2341 }]
+}).then(device => device.open());`
+  },
+  {
+    slug: 'web-audio',
+    title: 'Web Audio API',
+    summary: 'Create and manipulate audio.',
+    description: 'The Web Audio API provides a powerful system for controlling audio on the web.',
+    codeSnippet: `const audioContext = new AudioContext();
+const oscillator = audioContext.createOscillator();
+oscillator.connect(audioContext.destination);
+oscillator.start();`
+  },
+  {
+    slug: 'web-speech',
+    title: 'Web Speech API',
+    summary: 'Speech recognition and synthesis.',
+    description: 'The Web Speech API enables speech recognition and text-to-speech functionality.',
+    codeSnippet: `const synthesis = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance('Hello World');
+synthesis.speak(utterance);`
+  },
+  {
+    slug: 'web-crypto',
+    title: 'Web Crypto API',
+    summary: 'Cryptographic operations.',
+    description: 'The Web Crypto API provides cryptographic functionality for web applications.',
+    codeSnippet: `const data = new TextEncoder().encode('Secret data');
+crypto.subtle.digest('SHA-256', data)
+  .then(hash => console.log(new Uint8Array(hash)));`
+  },
+  {
+    slug: 'media-recorder',
+    title: 'MediaRecorder API',
+    summary: 'Record audio and video.',
+    description: 'The MediaRecorder API enables recording of audio and video streams.',
+    codeSnippet: `navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    const recorder = new MediaRecorder(stream);
+    recorder.start();
+  });`
+  },
+  {
+    slug: 'media-capabilities',
+    title: 'Media Capabilities',
+    summary: 'Check media playback support.',
+    description: 'The Media Capabilities API provides information about the device\'s ability to play media.',
+    codeSnippet: `navigator.mediaCapabilities.decodingInfo({
+  type: 'file',
+  video: {
+    contentType: 'video/mp4;codecs=h264',
+    width: 1920,
+    height: 1080,
+    bitrate: 2000000,
+    framerate: 30
+  }
+});`
+  },
+  {
+    slug: 'web-locks',
+    title: 'Web Locks API',
+    summary: 'Coordinate resource access.',
+    description: 'The Web Locks API allows web apps to coordinate access to resources.',
+    codeSnippet: `navigator.locks.request('resource_name', async lock => {
+  // Critical section
+  await doSomething();
+});`
+  },
+  {
+    slug: 'background-fetch',
+    title: 'Background Fetch',
+    summary: 'Download in background.',
+    description: 'Background Fetch API allows downloading of large resources in the background.',
+    codeSnippet: `navigator.serviceWorker.ready.then(registration => {
+  registration.backgroundFetch.fetch(
+    'large-file',
+    ['/videos/movie.mp4'],
+    { title: 'Downloading movie' }
+  );
+});`
+  },
+  {
+    slug: 'image-capture',
+    title: 'ImageCapture API',
+    summary: 'Advanced camera control.',
+    description: 'The ImageCapture API provides advanced camera controls for web applications.',
+    codeSnippet: `navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    const track = stream.getVideoTracks()[0];
+    const imageCapture = new ImageCapture(track);
+    return imageCapture.takePhoto();
+  });`
+  },
+  {
+    slug: 'contact-picker',
+    title: 'Contact Picker API',
+    summary: 'Access device contacts.',
+    description: 'The Contact Picker API allows web apps to access the device\'s contacts.',
+    codeSnippet: `const picker = new ContactsPicker();
+picker.select(['name', 'email'])
+  .then(contacts => console.log(contacts));`
   }
 ]; 
