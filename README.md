@@ -1,3 +1,11 @@
+# Javascript Tips & Tricks with code examples
+
+Built with love by the RuleCMS Team
+
+Homepage has the tip summary in card format. Clicking on it, takes user to the details page.
+
+The detail pages are in a tutorial format, explaining the concept with a code example.
+
 ## Created with Vue 3 + Vite
 
 ### Development
