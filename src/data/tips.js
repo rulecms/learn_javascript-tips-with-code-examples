@@ -1076,5 +1076,127 @@ ws.send('Hello Server!');`
   }
 });`
   },
+  {
+    slug: 'web-share',
+    title: 'Web Share API',
+    summary: 'Native sharing capabilities.',
+    description: 'The Web Share API provides a way to trigger the native sharing capabilities of the device.',
+    codeSnippet: `navigator.share({
+  title: 'Check this out!',
+  text: 'Interesting article',
+  url: window.location.href
+});`
+  },
+  {
+    slug: 'web-speech',
+    title: 'Web Speech API',
+    summary: 'Speech recognition and synthesis.',
+    description: 'The Web Speech API enables you to incorporate voice data into web apps.',
+    codeSnippet: `const synth = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance('Hello World');
+synth.speak(utterance);`
+  },
+  {
+    slug: 'web-bluetooth',
+    title: 'Web Bluetooth API',
+    summary: 'Connect to Bluetooth devices.',
+    description: 'The Web Bluetooth API allows websites to communicate with Bluetooth devices.',
+    codeSnippet: `navigator.bluetooth.requestDevice({
+  filters: [{ services: ['battery_service'] }]
+})
+.then(device => device.gatt.connect());`
+  },
+  {
+    slug: 'web-usb',
+    title: 'Web USB API',
+    summary: 'USB device interaction.',
+    description: 'The Web USB API provides a way to safely expose USB device services to the web.',
+    codeSnippet: `navigator.usb.requestDevice({ filters: [] })
+  .then(device => device.open())
+  .then(() => console.log('Connected'));`
+  },
+  {
+    slug: 'web-locks',
+    title: 'Web Locks API',
+    summary: 'Resource coordination.',
+    description: 'The Web Locks API allows web apps to coordinate the use of resources.',
+    codeSnippet: `navigator.locks.request('resource_name', async lock => {
+  // Critical section
+  await doSomething();
+});`
+  },
+  {
+    slug: 'web-crypto',
+    title: 'Web Crypto API',
+    summary: 'Cryptographic operations.',
+    description: 'The Web Crypto API provides cryptographic functionality in web applications.',
+    codeSnippet: `const data = new TextEncoder().encode('Hello');
+crypto.subtle.digest('SHA-256', data)
+  .then(hash => console.log(hash));`
+  },
+  {
+    slug: 'web-animations',
+    title: 'Web Animations API',
+    summary: 'Programmatic animations.',
+    description: 'The Web Animations API provides control over browser animations.',
+    codeSnippet: `element.animate([
+  { transform: 'scale(1)' },
+  { transform: 'scale(1.5)' }
+], {
+  duration: 1000,
+  iterations: Infinity
+});`
+  },
+  {
+    slug: 'web-components',
+    title: 'Web Components',
+    summary: 'Custom HTML elements.',
+    description: 'Web Components allow you to create reusable custom elements.',
+    codeSnippet: `class MyElement extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = 'Hello from custom element!';
+  }
+}
+customElements.define('my-element', MyElement);`
+  },
+  {
+    slug: 'web-rtc',
+    title: 'WebRTC',
+    summary: 'Real-time communication.',
+    description: 'WebRTC enables real-time communication of audio, video, and data in web apps.',
+    codeSnippet: `const pc = new RTCPeerConnection();
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => pc.addTrack(stream.getVideoTracks()[0]));`
+  },
+  {
+    slug: 'web-audio',
+    title: 'Web Audio API',
+    summary: 'Audio processing.',
+    description: 'The Web Audio API provides a powerful system for controlling audio on the web.',
+    codeSnippet: `const audioContext = new AudioContext();
+const oscillator = audioContext.createOscillator();
+oscillator.connect(audioContext.destination);
+oscillator.start();`
+  },
+  {
+    slug: 'web-serial',
+    title: 'Web Serial API',
+    summary: 'Serial port communication.',
+    description: 'The Web Serial API provides a way to read and write data to serial devices through USB ports.',
+    codeSnippet: `navigator.serial.requestPort()
+  .then(port => port.open({ baudRate: 9600 }))
+  .then(port => console.log('Connected to serial port'));`
+  },
+  {
+    slug: 'web-nfc',
+    title: 'Web NFC',
+    summary: 'NFC tag interaction.',
+    description: 'The Web NFC API enables web apps to read and write to NFC tags when they are in close proximity.',
+    codeSnippet: `const ndef = new NDEFReader();
+await ndef.scan();
+ndef.onreading = ({ message }) => {
+  console.log(message);
+};`
+  }
 ];
 console.log(tips.length);
